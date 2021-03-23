@@ -9,11 +9,13 @@ var ufoAttributes = {
     velocity: 6,
     weapon: '',
     laser: '',
+    laserText: '',
     timeBullet: 0,
     ufoActions: {
         UP: '',
         DOWN: '',
         SHOOT:'',
+        RELOAD: '',
         PAUSE: ''
     }
 } 

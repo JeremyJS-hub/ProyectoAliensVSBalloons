@@ -1,5 +1,4 @@
 var context = '';
-var bgGame = '';
 //variable que contendra el asset ufo
 var ufo = '';
 
@@ -9,18 +8,18 @@ var timeElapsed = {
   seconds: 0,
   timeElapsedText: "",
 };
-var timer
-//Globos y sus atributos
-var bRed;
-var bBlue;
-var bRose;
-var bPurple;
-var bYellow;
-var bGreen;
+
+//Globos
+var blg;
+var blcreator;
+var timebl;
+var blcontainer;
+var bExplotion = '';
+var blloons = ['bRed', 'bBlue', 'bRose', 'bBlue', 'bPurple', 'bBlue', 'bYellow', 'bBlue', 'bGreen']
 
 //configunarion de texto del HUD
 var textConfig = {
-  color: "#000",
+  color: "#ffff",
   fontSize: 25,
   padding: 10,
 };
@@ -52,4 +51,14 @@ class gVariables{
 
 var resume = '';
 var bullet;
-var executed = false;
+var bullet2;
+var bulletAmount = null;
+var reloading = false;
+var timer;
+var timer2 = null;
+//variables del background del escenario
+var bgGame = '';
+var sun;
+var moon;
+var cloud;
+var bgScenes = ['cDia', 'cNoche', 'skyDia', 'skyNoche']

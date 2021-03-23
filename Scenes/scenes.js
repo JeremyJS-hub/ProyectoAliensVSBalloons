@@ -7,16 +7,18 @@ var vGlobales = new gVariables();
 //Escenas o vistas del juego
 
 //Vista de pausa
-var sceneMenuPause = new Phaser.Class({
-  Extends: Phaser.Scene,
+class sceneMenuPause extends Phaser.Scene{
+  constructor() {
+    super({key: 'sceneMenuPause'})
+  }
 
-  initialize: function sceneMenuPause() {
-    Phaser.Scene.call(this, { key: "sceneMenuPause" });
-  },
+  init(data){
 
-  preload: function () {},
+  }
+  
+  preload(){}
 
-  create: function () {
+  create(){
     this.add.text(500, 550, "Juego Pausado", {
       color: "#000",
       backgroundColor: "#fff",
@@ -30,31 +32,25 @@ var sceneMenuPause = new Phaser.Class({
       this.scene.stop();
       this.scene.resume("scenePlayGame");
     });
-  },
+  }
 
-  update: function (time, delta) {},
-});
+  update(timer, delta){}
+}
 
 //Vista de juego ganado
-var sceneWon = new Phaser.Class({
-  Extends: Phaser.Scene,
-
-  initialize: function sceneWon() {
-    Phaser.Scene.call(this, { key: "sceneWon" });
-  },
-
-  //Esta objeto init ejecuta una funcion que recibe
-  //datos desde donde se llama la escena
-  //Aplica para esta escena, debe uncluir si es necesario este
-  //objeto en otras escenas
-  init: function (data) {
+class sceneWon extends Phaser.Scene{
+  constructor() {
+    super({key: 'sceneWon'})
+  }
+  
+  init(data){
     this.time = data.time;
     this.score = data.score;
-  },
+  }
 
-  preload: function () {},
+  preload(){}
 
-  create: function () {
+  create(){
     this.add.text(500, 350, "Has ganado", {
       color: "#000",
       backgroundColor: "#fff",
@@ -73,28 +69,26 @@ var sceneWon = new Phaser.Class({
         fontSize: 25,
         padding: 10,
       });
-  },
+  }
 
-  update: function (time, delta) {},
-});
+  update(timer, delta){}
+}
 
 //Vista de juego perdido
-var sceneLose = new Phaser.Class({
-  Extends: Phaser.Scene,
-
-  initialize: function sceneLose() {
-    Phaser.Scene.call(this, { key: "sceneLose" });
-  },
-
-  init: function (data) {
+class sceneLose extends Phaser.Scene{
+  constructor() {
+    super({key: 'sceneLose'})
+  }
+  
+  init(data){
     this.reasonLose = data.rl;
     this.time = data.time;
     this.score = data.score;
-  },
+  }
 
-  preload: function () {},
+  preload(){}
 
-  create: function () {
+  create(){
     this.add.text(
       400,
       350,
@@ -124,26 +118,28 @@ var sceneLose = new Phaser.Class({
     resume = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 
     resume.on("down", (event) => {
+      bullet2 = null
       this.scene.stop();
       this.scene.stop('scenePlayGame');
-      this.scene.launch("scenePlayGame");
-    });
-  },
 
-  update: function (time, delta) {},
-});
+
+      this.scene.start("scenePlayGame", {
+        bg: bgScenes[Math.floor(Math.random() * (4 - 0)) + 0]
+      });
+    });
+  }
+
+  update(timer, delta){}
+}
 
 //Vista de comenzar juego
-var sceneStartGame = new Phaser.Class({
-  Extends: Phaser.Scene,
+class sceneStartGame extends Phaser.Scene{
+  constructor() {
+    super({key: 'sceneStartGame'})
+  }
+  preload(){}
 
-  initialize: function sceneStartGame() {
-    Phaser.Scene.call(this, { key: "sceneStartGame" });
-  },
-
-  preload: function () {},
-
-  create: function () {
+  create(){
     this.add.text(400, 350, "Presione ENTER para \n comenzar juego", {
       color: "#000",
       backgroundColor: "#fff",
@@ -153,12 +149,12 @@ var sceneStartGame = new Phaser.Class({
     resume = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 
     resume.on("down", (event) => {
-      this.scene.stop();
-      this.scene.launch("scenePlayGame");
+      this.scene.start("scenePlayGame", {
+        bg: bgScenes[Math.floor(Math.random() * (4 - 0)) + 0]
+      });
     });
-  },
-
-  update: function (time, delta) {},
-});
+  }
+  update(timer, delta){}
+}
 
 export { sceneMenuPause as default, sceneWon, sceneLose, sceneStartGame};
