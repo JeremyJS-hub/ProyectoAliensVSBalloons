@@ -51,8 +51,10 @@ function balloonsController() {
    * luego aqui continuas con el movimiento hacia arriba - guiate en la funcion ufoController()
    * dentro esta la funcion actionShoot() y usa las variables de globos en gVariables
    *
+   * 
    */
 }
+bullet
 
 //Funcion que controla al ufo
 function ufoController() {
@@ -237,7 +239,18 @@ function laserBulletAndBallonsCreator() {
     blcreator.name = "bullet " + i;
   }
 
-  //Aqui abajo Eric
+  ufo.ufoAttributes.blg= context.physics.add.group();
+  ufo.ufoAttributes.blg.body=true;
+  for(let i = 0; i < 30 ; i++){
+      blcreator= ufo.ufoAttributes.blg.create(500,610,blloons[Math.round(Math.random() * (8 - 0)) + 0]);
+      blcreator= ufo.ufoAttributes.blg.create(400,584,blloons[Math.round(Math.random() * (8 - 0)) + 0]);
+      blcreator= ufo.ufoAttributes.blg.create(350,584,blloons[Math.round(Math.random() * (8 - 0)) + 0]);
+      blcreator= ufo.ufoAttributes.blg.create(280,600,blloons[Math.round(Math.random() * (8 - 0)) + 0]);
+      blcreator= ufo.ufoAttributes.blg.create(600,610,blloons[Math.round(Math.random() * (8 - 0)) + 0]);
+      blcreator= ufo.ufoAttributes.blg.create(680,600,blloons[Math.round(Math.random() * (8 - 0)) + 0]);
+      blcreator.name="blloons" + i;
+  }
+  
 }
 
 //funcion que muestra los limites si el ufo se acerca
