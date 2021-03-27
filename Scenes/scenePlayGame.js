@@ -248,8 +248,9 @@ function laserBulletAndBallonsCreator() {
       blcreator= ufo.ufoAttributes.blg.create(280,600,blloons[Math.round(Math.random() * (8 - 0)) + 0]);
       blcreator= ufo.ufoAttributes.blg.create(600,610,blloons[Math.round(Math.random() * (8 - 0)) + 0]);
       blcreator= ufo.ufoAttributes.blg.create(680,600,blloons[Math.round(Math.random() * (8 - 0)) + 0]);
-      blcreator.name="blloons" + i;
+      
   }
+
   
 }
 
