@@ -149,6 +149,7 @@ function ufoController() {
                     "Galushi se ha quedado sin balas, R para recargar"
                 );
                 PlayAudio(sin_balas);
+                console.log("sin ba");
             } else {}
         }
     }
@@ -530,7 +531,7 @@ class scenePlayGame extends Phaser.Scene {
     }
 }
 
-var sin_balas = new Audio('audio/episodio2sonidopistolasinbalas-hansmarroquin-ivoox13276781.mp3');
+var sin_balas = new Audio('audio/sin_balas.mp3');
 var laser = new Audio('audio/laser.mp3');
 var recarga_bala = new Audio('audio/recarga_bala.mp3');
 
