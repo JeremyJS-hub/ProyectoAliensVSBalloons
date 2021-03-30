@@ -187,43 +187,30 @@ function sceneController() {
 
 //funcion que controla la puntuacion
 function scoringController(collider1, collider2) {
-  /** Esta funcion se ejecuta en la funcion collideAndOverlapObjectsDetecter() dentro del primer add.collider() y recibe los parametros:
-   *  collider1 y collider2 que son los objetos que colisionan (en este caso son los globos(collider1) y los laseres(collider2))
-   *
-   * Ricardo trabaja aqui - actualizacion de indicaciones
-   *
-   * 10. Los globos azules aumentan la cantidad de helio en 10 puntos, los demás la aumentan en 1
-   *      punto.
-   *
-   * ufo.ufoAttributes.helioTank - cantidad de helio - por defecto 100 - aumenta segun los globos que explotan y si es menor o igual a 100
-   *
-   * chequear si collider1.texture.key es igual a (es un string):
-   * bBlue \ ufo.ufoAttributes.helioTank += 10
-   * bRed \ ufo.ufoAttributes.helioTank +=  1
-   * bPurple \ ufo.ufoAttributes.helioTank += 1
-   * bYellow \ ufo.ufoAttributes.helioTank += 1
-   * bRose \ ufo.ufoAttributes.helioTank += 1
-   * bGreen \ ufo.ufoAttributes.helioTank += 1
-   *
-   * Actualiza en pantalla el helio con: ufo.ufoAttributes.helioTankText.setText(ufo.ufoAttributes.helioTank) //esto es de prueba hasta que se agrege la barra de progreso en la pantalla
-   *
-   * 11. Cuando la nave logre un total de 500 puntos en la cantidad de helio, se pasa al siguiente
-   *      nivel.
-   *
-   * ufo.ufoAttributes.score - puntuacion - por defecto 0 - aumentar segun los globos que explotan
-   *
-   * chequear si collider1.texture.key es igual a:
-   * bBlue \ ufo.ufoAttributes.score += 20
-   * bRed \ ufo.ufoAttributes.score += 10
-   * bPurple \ ufo.ufoAttributes.score += 10
-   * bYellow \ ufo.ufoAttributes.score += 10
-   * bRose \ ufo.ufoAttributes.score += 10
-   * bGreen \ ufo.ufoAttributes.score += 10
-   *
-   * chequear si ufo.ufoAttributes.score es mayor o igual a 500 ejecutar endGame('youWon')
-   *
-   * Actualizar score en pantalla con: ufo.ufoAttributes.scoreText(ufo.ufoAttributes.score + ' pts')
-   */
+   if (collider1.texture.key === 'bBlue') {
+    ufo.ufoAttributes.helioTank += 20;
+    if (ufo.ufoAttributes.helioTank >= 200) {
+      ufo.ufoAttributes.helioTank = 200;
+    } 
+    ufo.ufoAttributes.score += 20
+    if (ufo.ufoAttributes.score >= 500) {
+      endGame('youWon')
+    }
+  } else{
+    ufo.ufoAttributes.helioTank += 2;
+    if (ufo.ufoAttributes.helioTank >= 200) {
+      ufo.ufoAttributes.helioTank = 200;
+    }
+    ufo.ufoAttributes.score += 10;
+    if (ufo.ufoAttributes.score >= 500) {
+      endGame('youWon')
+    }
+  }
+
+  ufo.ufoAttributes.helioTankBar.clear();
+  ufo.ufoAttributes.helioTankBar.fillStyle(0x39ff14, .7);
+  ufo.ufoAttributes.helioTankBar.fillRect(2, 2, ufo.ufoAttributes.helioTank, 25, 0);
+  ufo.ufoAttributes.scoreText.setText(ufo.ufoAttributes.score + ' pts')
 }
 
 //funcion para crear  laseres y globos
