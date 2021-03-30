@@ -59,7 +59,39 @@ function HUD() {
  *    controla el movimiento del globo, en la funcion abajo de esta funcion se crean los globos aleatoriamente).
  */
 function balloonsController() {
+  if (context.time.now > timebl) {
+    blcontainer = blg.getFirstDead(false);
+    if (blcontainer) {
+      blcontainer.body.reset(
+        Math.round(Math.random() * (650 - 100)) + 100,
+        700
+      );
+      blcontainer.visible = true;
+      blcontainer.active = true;
+/**
+ * 5. La velocidad de los globos es aleatoria, los azules deben subir más rápido.
+ */
+      if (blcontainer.texture.key === "bBlue") {
+        blcontainer.body.velocity.y = -(
+          Math.round(Math.random() * (300 - 275)) + 275
+        );
+      } else {
+        blcontainer.body.velocity.y = -(
+          Math.round(Math.random() * (250 - 225)) + 225
+        );
+      }
 
+      timebl = context.time.now + 1000;
+    } else {
+    }
+  }
+  //Para que reaparezcan los globos (para reutilizarlos)
+  for (let i = 0; i < blg.children.size; i++) {
+    if (blg.children.entries[i].y <= -2000) {
+      blg.children.entries[i].visible = false;
+      blg.children.entries[i].active = false;
+    }
+  }
 }
 
 //funcion para crear  laseres y globos
