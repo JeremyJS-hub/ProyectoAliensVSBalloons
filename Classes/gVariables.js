@@ -1,3 +1,5 @@
+var WebFontConfig;
+
 var context = '';
 //variable que contendra el asset ufo
 var ufo = '';
@@ -12,22 +14,19 @@ var timeElapsed = {
 //Globos
 var blg;
 var blcreator;
-var timebl;
+var timebl = 0;
 var blcontainer;
 var bExplotion = '';
-var blloons = ['bRed', 'bBlue', 'bRose', 'bBlue', 'bPurple', 'bBlue', 'bYellow', 'bBlue', 'bGreen']
+var blloons = ['bRed', 'bBlue', 'bRose', 'bPurple', 'bYellow', 'bBlue', 'bGreen']
 
 //configunarion de texto del HUD
-var textConfig = {
-  color: "#ffff",
-  fontSize: 25,
-  padding: 10,
-};
+var textConfig;
 
 //configuracion de texto limites
 var textLimitConfig = {
   color: "#FF0000",
-  fontSize: 25,
+  fontFamily: 'Fontdiner Swanky',
+  fontSize: 20,
 };
 
 //limites hasta donde no debe llegar el ufo
@@ -56,9 +55,11 @@ var bulletAmount = null;
 var reloading = false;
 var timer;
 var timer2 = null;
+var timer3;
 //variables del background del escenario
 var bgGame = '';
 var sun;
 var moon;
 var cloud;
 var bgScenes = ['cDia', 'cNoche', 'skyDia', 'skyNoche']
+var progressBox;

@@ -12,7 +12,7 @@ var gameConfig = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 0}
+            gravity: { y: 0 }
         }
     },
     scene: [
@@ -22,7 +22,6 @@ var gameConfig = {
         scenes.sceneWon,
         scenes.sceneLose,
     ]
-   
 };
 
 var game = new Phaser.Game(gameConfig);
