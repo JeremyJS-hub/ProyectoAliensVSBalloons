@@ -247,17 +247,7 @@ function laserBulletAndBallonsCreator() {
         blcreator.name = "bullet " + i;
     }
 
-    ufo.ufoAttributes.blg = context.physics.add.group();
-    ufo.ufoAttributes.blg.body = true;
-    for (let i = 0; i < 30; i++) {
-        blcreator = ufo.ufoAttributes.blg.create(500, 610, blloons[Math.round(Math.random() * (8 - 0)) + 0]);
-        blcreator = ufo.ufoAttributes.blg.create(400, 584, blloons[Math.round(Math.random() * (8 - 0)) + 0]);
-        blcreator = ufo.ufoAttributes.blg.create(350, 584, blloons[Math.round(Math.random() * (8 - 0)) + 0]);
-        blcreator = ufo.ufoAttributes.blg.create(280, 600, blloons[Math.round(Math.random() * (8 - 0)) + 0]);
-        blcreator = ufo.ufoAttributes.blg.create(600, 610, blloons[Math.round(Math.random() * (8 - 0)) + 0]);
-        blcreator = ufo.ufoAttributes.blg.create(680, 600, blloons[Math.round(Math.random() * (8 - 0)) + 0]);
-
-    }
+   
 
 
 }
