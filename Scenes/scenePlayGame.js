@@ -227,7 +227,30 @@ function showLimits() {
  *     colisionan los laseres y los globos)
  */
 function scoringController(collider1, collider2) {
+  if (collider1.texture.key === 'bBlue') {
+    ufo.ufoAttributes.helioTank += 20;
+    if (ufo.ufoAttributes.helioTank >= 200) {
+      ufo.ufoAttributes.helioTank = 200;
+    } 
+    ufo.ufoAttributes.score += 20
+    if (ufo.ufoAttributes.score >= 500) {
+      endGame('youWon')
+    }
+  } else{
+    ufo.ufoAttributes.helioTank += 2;
+    if (ufo.ufoAttributes.helioTank >= 200) {
+      ufo.ufoAttributes.helioTank = 200;
+    }
+    ufo.ufoAttributes.score += 10;
+    if (ufo.ufoAttributes.score >= 500) {
+      endGame('youWon')
+    }
+  }
 
+  ufo.ufoAttributes.helioTankBar.clear();
+  ufo.ufoAttributes.helioTankBar.fillStyle(0x39ff14, .7);
+  ufo.ufoAttributes.helioTankBar.fillRect(2, 2, ufo.ufoAttributes.helioTank, 25, 0);
+  ufo.ufoAttributes.scoreText.setText(ufo.ufoAttributes.score + ' pts')
 }
 
 //funcion para crear colisiones y/o traslapaciones entre objetos
