@@ -100,27 +100,27 @@ class sceneLose extends Phaser.Scene {
 
   create() {
       this.add.text(
-          400,
-          350,
+          250,
+          150,
           "La nave a explotado por \n" +
           this.reasonLose +
           "\nPresione ENTER para volver a jugar", {
               color: "#000",
               backgroundColor: "#fff",
-              fontSize: 20,
+              fontSize: 18,
               padding: 10,
           }
       );
-      this.add.text(500, 450, "Puntuacion: " + this.score, {
+      this.add.text(360, 250, "Puntuacion: " + this.score, {
           color: "#000",
           backgroundColor: "#fff",
-          fontSize: 25,
+          fontSize: 18,
           padding: 10,
       });
-      this.add.text(500, 550, "Tiempo: " + this.time, {
+      this.add.text(360, 320, "Tiempo: " + this.time, {
           color: "#000",
           backgroundColor: "#fff",
-          fontSize: 25,
+          fontSize: 18,
           padding: 10,
       });
 
@@ -153,9 +153,9 @@ class sceneStartGame extends Phaser.Scene {
   preload() {}
 
   create() {
-      this.add.text(400, 350, "Presione ENTER para \n comenzar juego", {
-          color: "#000",
-          backgroundColor: "#fff",
+      this.add.text(320, 260, "Presione ENTER para \n comenzar juego", {
+          color: "#fff",
+          backgroundColor: "#000",
           fontSize: 20,
           padding: 10,
       });
