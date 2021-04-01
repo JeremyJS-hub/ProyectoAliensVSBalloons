@@ -64,27 +64,57 @@ class sceneWon extends Phaser.Scene {
     preload() {}
 
     create() {
-        this.add.text(500, 350, "Has ganado", {
+        this.add.text(250, 150, "Has ganado. \nPresione ENTER para volver a jugar. \n Q para salir.", {
             color: "#000",
             backgroundColor: "#fff",
-            fontSize: 25,
-            padding: 10,
+            fontSize: 20,
+            padding: 5,
+            fontFamily: "Fontdiner Swanky"
         });
-        this.add.text(500, 450, "Puntuacion: " + this.score, {
+        this.add.text(360, 300, "Puntuacion: " + this.score + " pts", {
             color: "#000",
             backgroundColor: "#fff",
-            fontSize: 25,
-            padding: 10,
+            fontSize: 20,
+            padding: 5,
+            fontFamily: "Fontdiner Swanky"
         });
-        this.add.text(500, 550, "Tiempo: " + this.time, {
+        this.add.text(360, 350, "Tiempo: " + this.time, {
             color: "#000",
             backgroundColor: "#fff",
-            fontSize: 25,
-            padding: 10,
+            fontSize: 20,
+            padding: 5,
+            fontFamily: "Fontdiner Swanky"
         });
+        resume = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+        quit = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
         stopAudio(inicio);
         setTimeout(function() { PlayAudio(victory_sonic) }, 2000);
         PlayAudio(win_street_fighter);
+
+        resume.on("down", (event) => {
+
+            if(this.scene.isActive("scenePlayGame") === false){
+              PlayAudio(inicio);
+              stopAudio(menu_pausa);
+              bullet2 = null
+    
+              this.scene.start("scenePlayGame", {
+                  bg: bgScenes[Math.floor(Math.random() * (4 - 0)) + 0]
+              });
+            }
+        });
+        quit.on("down", (event) => {
+  
+          if(this.scene.isActive("scenePlayGame") === false){
+            stopAudio(inicio);
+            stopAudio(menu_pausa);
+            bullet2 = null
+  
+            this.scene.start("sceneStartGame", {
+                bg: bgScenes[Math.floor(Math.random() * (4 - 0)) + 0]
+            });
+          }
+      });
     }
 
     update(timer, delta) {}
@@ -110,42 +140,58 @@ class sceneLose extends Phaser.Scene {
             150,
             "La nave a explotado por \n" +
             this.reasonLose +
-            "\nPresione ENTER para volver a jugar", {
+            "\nPresione ENTER para volver a jugar. \n Q para salir.", {
                 color: "#000",
                 backgroundColor: "#fff",
-                fontSize: 18,
-                padding: 10,
+                fontSize: 20,
+                padding: 5,
+                fontFamily: "Fontdiner Swanky"
             }
         );
-        this.add.text(360, 250, "Puntuacion: " + this.score, {
+        this.add.text(360, 300, "Puntuacion: " + this.score + " pts", {
             color: "#000",
             backgroundColor: "#fff",
-            fontSize: 18,
-            padding: 10,
+            fontSize: 20,
+            padding: 5,
+            fontFamily: "Fontdiner Swanky"
         });
-        this.add.text(360, 320, "Tiempo: " + this.time, {
+        this.add.text(360, 350, "Tiempo: " + this.time, {
             color: "#000",
             backgroundColor: "#fff",
-            fontSize: 18,
-            padding: 10,
+            fontSize: 20,
+            padding: 5,
+            fontFamily: "Fontdiner Swanky"
         });
 
         PlayAudio(explosion_nave);
         PlayAudio(menu_pausa);
         stopAudio(inicio);
         resume = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+        quit = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
 
         resume.on("down", (event) => {
 
-            PlayAudio(inicio);
-            stopAudio(menu_pausa);
-            bullet2 = null
-            this.scene.stop();
-            this.scene.stop('scenePlayGame');
+            if(this.scene.isActive("scenePlayGame") === false){
+              PlayAudio(inicio);
+              stopAudio(menu_pausa);
+              bullet2 = null
+    
+              this.scene.start("scenePlayGame", {
+                  bg: bgScenes[Math.floor(Math.random() * (4 - 0)) + 0]
+              });
+            }
+        });
+        quit.on("down", (event) => {
 
-            this.scene.start("scenePlayGame", {
-                bg: bgScenes[Math.floor(Math.random() * (4 - 0)) + 0]
-            });
+            if(this.scene.isActive("scenePlayGame") === false){
+              stopAudio(inicio);
+              stopAudio(menu_pausa);
+              bullet2 = null
+    
+              this.scene.start("sceneStartGame", {
+                  bg: bgScenes[Math.floor(Math.random() * (4 - 0)) + 0]
+              });
+            }
         });
     }
 
@@ -164,7 +210,8 @@ class sceneStartGame extends Phaser.Scene {
             color: "#fff",
             backgroundColor: "#000",
             fontSize: 20,
-            padding: 10,
+            padding: 5,
+            fontFamily: "Fontdiner Swanky"
         });
 
         resume = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
