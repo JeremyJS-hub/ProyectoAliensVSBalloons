@@ -49,6 +49,7 @@ class gVariables{
 }
 
 var resume = '';
+var quit = "";
 var bullet;
 var bullet2;
 var bulletAmount = null;
